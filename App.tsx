@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import FlipVocaCard from "./components/flipCardComponents/FlipVocaCard";
 
 export default function App() {
   var test = {
@@ -22,7 +23,7 @@ export default function App() {
             definition:
               "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
             synonyms: [],
-            antonyms: [],
+            antonyms: ["1", "2", "3", "4"],
           },
           {
             definition:
@@ -35,10 +36,9 @@ export default function App() {
     ],
   };
 
-  console.log(test);
   return (
     <View style={styles.container}>
-      <Text>{test.word}</Text>
+      <FlipVocaCard wordObj={test} />
       <StatusBar style='auto' />
     </View>
   );
@@ -46,6 +46,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    margin: 50,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
