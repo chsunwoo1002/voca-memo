@@ -51,7 +51,7 @@ export default function FlipVocaCard({ wordObj }: VocaValueProps) {
                   return (
                     <View key={defIdx}>
                       <Text>{definition.definition}</Text>
-                      {/* Need to implement synonyms and antonyms */}
+                      {/* Need to implement synonym and antonym */}
                     </View>
                   );
                 }
