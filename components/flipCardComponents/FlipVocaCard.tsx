@@ -32,15 +32,15 @@ export default function FlipVocaCard({ wordObj }: VocaValueProps) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
   return (
-    <FlipCard style={styles.flipcard}>
+    <FlipCard style={styles.flipCard}>
       {/* Face Side */}
-      <View>
+      <View style={styles.card}>
         <Text>{wordObj.word}</Text>
         <Text>{wordObj.phonetic}</Text>
         <Text>audio needs to be implemented</Text>
       </View>
       {/* Back Side */}
-      <View>
+      <View style={styles.card}>
         <Text>Origin: {wordObj.origin}</Text>
         {wordObj.meanings.map((meaning: meaning, meanIdx: number) => {
           return (
@@ -65,9 +65,20 @@ export default function FlipVocaCard({ wordObj }: VocaValueProps) {
 }
 
 const styles = StyleSheet.create({
-  flipcard: {
-    width: 300,
-    height: 60,
+  card: {
+    width: "50%",
+    height: "50%",
+    borderWidth: 5,
+    borderStyle: "solid",
+    borderColor: "red",
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  flipCard: {
+    width: 900,
+    height: "100%",
     borderWidth: 5,
     borderStyle: "solid",
     borderColor: "black",
