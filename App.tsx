@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import FlipVocaCard from "./components/flipCardComponents/FlipVocaCard";
 import NagivationContainer from "./components/navigation/NavigationContainer";
-
+import styles from "./assets/Styles";
+import DismissKeyboard from "./components/DismissKeyboard";
 export default function App() {
   var test = {
     word: "apple",
@@ -36,25 +37,12 @@ export default function App() {
       },
     ],
   };
-
   return (
-    <View style={styles.container}>
+    <View nativeID='main-screen' style={styles.entireScreen}>
       <NagivationContainer />
+      <View style={styles.entireContainer} />
+
       {/*<FlipVocaCard wordObj={test} />*/}
-      {/*<StatusBar style='auto' />*/}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: 1000,
-    height: 1000,
-    borderWidth: 5,
-    borderStyle: "solid",
-    borderColor: "black",
-    margin: 50,
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});

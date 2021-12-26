@@ -1,33 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import FlipCard from "react-native-flip-card";
+import {
+  VocaValueProps,
+  phoneticType,
+  meaning,
+  definition,
+} from "../../assets/Interfaces";
 
-interface VocaValueProps {
-  wordObj: {
-    word: string;
-    phonetic: string;
-    phonetics: Array<phoneticType>;
-    origin: string;
-    meanings: Array<meaning>;
-  };
-}
-
-interface phoneticType {
-  text: string;
-  audio: string;
-}
-
-interface meaning {
-  partOfSpeech: string;
-  definitions: Array<definition>;
-}
-
-interface definition {
-  definition: string;
-  synonym?: Array<string> | never[];
-  antonym?: Array<string> | never[];
-}
-function flip() {}
 export default function FlipVocaCard({ wordObj }: VocaValueProps) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 

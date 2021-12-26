@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { SearchBar, Button } from "react-native-elements";
+import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
+import { SearchBar } from "react-native-elements";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import styles from "../../assets/Styles";
 
 export default function NavigationContainer() {
   const [search, setSearch] = useState("");
@@ -12,7 +13,7 @@ export default function NavigationContainer() {
     console.log(search);
   };
 
-  const getQuery = () => {
+  const getWordFromAPI = () => {
     fetch("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + search)
       .then((response) => {
         return response.json();
@@ -27,60 +28,16 @@ export default function NavigationContainer() {
   };
 
   return (
-    <SafeAreaProvider style={styles.view}>
-      <SearchBar
-        placeholder='Type Here...'
-        onChangeText={updateSearch}
-        value={search}
+    <View style={styles.navigationContainer}>
+      <TextInput
         style={styles.search}
+        onChangeText={updateSearch}
+        placeholder='search here:)'
+        onSubmitEditing={getWordFromAPI}
       />
-      <Button
-        title='Search'
-        loading={false}
-        loadingProps={{ size: "small", color: "white" }}
-        buttonStyle={{
-          backgroundColor: "rgba(111, 202, 186, 1)",
-          borderRadius: 5,
-        }}
-        titleStyle={{ fontWeight: "bold", fontSize: 23 }}
-        containerStyle={{
-          marginHorizontal: 50,
-          height: 50,
-          width: 200,
-          marginVertical: 10,
-        }}
-        onPress={getQuery}
-      />
-    </SafeAreaProvider>
+      <Pressable style={styles.button} onPress={getWordFromAPI}>
+        <Text>Search</Text>
+      </Pressable>
+    </View>
   );
 }
-const styles = StyleSheet.create({
-  view: {
-    width: 900,
-    height: 900,
-    borderWidth: 5,
-    borderStyle: "solid",
-    borderColor: "red",
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  search: {
-    width: 900,
-    height: 100,
-    borderWidth: 5,
-    borderStyle: "solid",
-    borderColor: "red",
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  button: {
-    width: 100,
-    height: 100,
-  },
-});
