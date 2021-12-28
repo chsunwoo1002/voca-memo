@@ -12,17 +12,30 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   entireContainer: {
-    width: windowWidth * 0.8,
+    width: windowWidth,
     height: windowHeight * 0.7,
     borderWidth: 5,
     borderStyle: "solid",
     borderColor: "black",
     backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  /* Testing */
+  testContainer: {
+    width: windowWidth,
+    height: windowHeight * 0.7,
+    padding: 10,
+    borderWidth: 5,
+    borderStyle: "solid",
+    borderColor: "black",
+    position: "absolute",
   },
   /**FlipVocaCard.tsx style attributes */
   card: {
-    width: "50%",
-    height: "50%",
+    width: windowWidth * 0.8,
+    height: windowHeight * 0.7,
     borderWidth: 5,
     borderStyle: "solid",
     borderColor: "red",
@@ -32,8 +45,6 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   flipCard: {
-    width: 900,
-    height: "100%",
     borderWidth: 5,
     borderStyle: "solid",
     borderColor: "black",

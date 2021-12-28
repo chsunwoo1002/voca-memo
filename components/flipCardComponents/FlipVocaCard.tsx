@@ -7,12 +7,13 @@ import {
   meaning,
   definition,
 } from "../../assets/Interfaces";
+import styles from "../../assets/Styles";
 
 export default function FlipVocaCard({ wordObj }: VocaValueProps) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
   return (
-    <FlipCard style={styles.flipCard}>
+    <FlipCard style={styles.entireContainer}>
       {/* Face Side */}
       <View style={styles.card}>
         <Text>{wordObj.word}</Text>
@@ -43,28 +44,3 @@ export default function FlipVocaCard({ wordObj }: VocaValueProps) {
     </FlipCard>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    width: "50%",
-    height: "50%",
-    borderWidth: 5,
-    borderStyle: "solid",
-    borderColor: "red",
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  flipCard: {
-    width: 900,
-    height: "100%",
-    borderWidth: 5,
-    borderStyle: "solid",
-    borderColor: "black",
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
