@@ -29,10 +29,41 @@ export default function App() {
       onPanResponderRelease: (evt, gestureState) => {},
     })
   ).current;
+
   const rotateX = useRef(
     position.x.interpolate({
       inputRange: [-windowWidth / 2, 0, windowWidth / 2],
       outputRange: ["-10deg", "0deg", "10deg"],
+      extrapolate: "clamp",
+    })
+  ).current;
+
+  const likeOpacity = useRef(
+    position.x.interpolate({
+      inputRange: [-windowWidth / 2, 0, windowWidth / 2],
+      outputRange: [0, 0, 1],
+      extrapolate: "clamp",
+    })
+  ).current;
+
+  const nopeOpacity = useRef(
+    position.x.interpolate({
+      inputRange: [-windowWidth / 2, 0, windowWidth / 2],
+      outputRange: [1, 0, 0],
+      extrapolate: "clamp",
+    })
+  ).current;
+  const nextCardOpacity = useRef(
+    position.x.interpolate({
+      inputRange: [-windowWidth / 2, 0, windowWidth / 2],
+      outputRange: [1, 0, 1],
+      extrapolate: "clamp",
+    })
+  ).current;
+  const nextCardScale = useRef(
+    position.x.interpolate({
+      inputRange: [-windowWidth / 2, 0, windowWidth / 2],
+      outputRange: [1, 0.8, 1],
       extrapolate: "clamp",
     })
   ).current;
@@ -100,6 +131,7 @@ export default function App() {
             >
               <Animated.View
                 style={{
+                  opacity: likeOpacity,
                   transform: [{ rotate: "-30deg" }],
                   position: "absolute",
                   top: 50,
@@ -120,8 +152,10 @@ export default function App() {
                   Yes
                 </Text>
               </Animated.View>
+
               <Animated.View
                 style={{
+                  opacity: nopeOpacity,
                   transform: [{ rotate: "30deg" }],
                   position: "absolute",
                   top: 50,
@@ -147,7 +181,18 @@ export default function App() {
           );
         } else {
           return (
-            <Animated.View key={i} style={styles.testContainer}>
+            <Animated.View
+              key={i}
+              style={[
+                styles.testContainer,
+                {
+                  opacity: nextCardOpacity,
+                  transform: [{ scale: nextCardScale }],
+                  padding: 10,
+                  position: "absolute",
+                },
+              ]}
+            >
               <Text>{item.id}</Text>
             </Animated.View>
           );
