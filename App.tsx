@@ -18,7 +18,6 @@ const windowHeight = Dimensions.get("window").height;
 
 export default function App() {
   const position = useRef(new Animated.ValueXY()).current;
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const panResponder = useRef(
     PanResponder.create({
@@ -26,7 +25,31 @@ export default function App() {
       onPanResponderMove: (evt, gestureState) => {
         position.setValue({ x: gestureState.dx, y: gestureState.dy });
       },
-      onPanResponderRelease: (evt, gestureState) => {},
+      onPanResponderRelease: (evt, gestureState) => {
+        if (gestureState.dx > 120) {
+          Animated.spring(position, {
+            useNativeDriver: true,
+            toValue: { x: windowWidth + 100, y: gestureState.dy },
+          }).start(() => {
+            setCurrentIndex((currentIndex) => currentIndex + 1);
+            position.setValue({ x: 0, y: 0 });
+          });
+        } else if (gestureState.dx < -120) {
+          Animated.spring(position, {
+            useNativeDriver: true,
+            toValue: { x: -windowWidth - 100, y: gestureState.dy },
+          }).start(() => {
+            setCurrentIndex((currentIndex) => currentIndex + 1);
+            position.setValue({ x: 0, y: 0 });
+          });
+        } else {
+          Animated.spring(position, {
+            useNativeDriver: true,
+            toValue: { x: 0, y: 0 },
+            friction: 4,
+          }).start();
+        }
+      },
     })
   ).current;
 
