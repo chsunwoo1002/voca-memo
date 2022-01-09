@@ -90,6 +90,7 @@ export default function App() {
       extrapolate: "clamp",
     })
   ).current;
+
   var test = [
     {
       word: "apple1",
@@ -300,7 +301,7 @@ export default function App() {
                 >
                   <Text style={styles.nopeText}>NOPE</Text>
                 </Animated.View>
-                <FlipVocaCard wordObj={item} />
+                <FlipVocaCard innerRef={panResponder} wordObj={item} />
               </Animated.View>
             );
           } else {
@@ -317,7 +318,7 @@ export default function App() {
                   },
                 ]}
               >
-                <FlipVocaCard wordObj={item} />
+                <FlipVocaCard ref={panResponder} wordObj={item} />
               </Animated.View>
             );
           }
