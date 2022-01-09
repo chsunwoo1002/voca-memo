@@ -90,139 +90,239 @@ export default function App() {
       extrapolate: "clamp",
     })
   ).current;
-  var test = {
-    word: "apple",
-    phonetic: "ˈap(ə)l",
-    phonetics: [
-      {
-        text: "ˈap(ə)l",
-        audio:
-          "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-      },
-    ],
-    origin:
-      "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-    meanings: [
-      {
-        partOfSpeech: "noun",
-        definitions: [
-          {
-            definition:
-              "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-            synonyms: [],
-            antonyms: ["1", "2", "3", "4"],
-          },
-          {
-            definition:
-              "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-            synonyms: [],
-            antonyms: [],
-          },
-        ],
-      },
-    ],
-  };
-
-  const Foods = [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-    { id: "4" },
-    { id: "5" },
+  var test = [
+    {
+      word: "apple1",
+      phonetic: "ˈap(ə)l",
+      phonetics: [
+        {
+          text: "ˈap(ə)l",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
+        },
+      ],
+      origin:
+        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
+      meanings: [
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition:
+                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
+              synonyms: [],
+              antonyms: ["1", "2", "3", "4"],
+            },
+            {
+              definition:
+                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "apple2",
+      phonetic: "ˈap(ə)l",
+      phonetics: [
+        {
+          text: "ˈap(ə)l",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
+        },
+      ],
+      origin:
+        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
+      meanings: [
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition:
+                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
+              synonyms: [],
+              antonyms: ["1", "2", "3", "4"],
+            },
+            {
+              definition:
+                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "apple3",
+      phonetic: "ˈap(ə)l",
+      phonetics: [
+        {
+          text: "ˈap(ə)l",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
+        },
+      ],
+      origin:
+        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
+      meanings: [
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition:
+                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
+              synonyms: [],
+              antonyms: ["1", "2", "3", "4"],
+            },
+            {
+              definition:
+                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "apple4",
+      phonetic: "ˈap(ə)l",
+      phonetics: [
+        {
+          text: "ˈap(ə)l",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
+        },
+      ],
+      origin:
+        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
+      meanings: [
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition:
+                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
+              synonyms: [],
+              antonyms: ["1", "2", "3", "4"],
+            },
+            {
+              definition:
+                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "apple5",
+      phonetic: "ˈap(ə)l",
+      phonetics: [
+        {
+          text: "ˈap(ə)l",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
+        },
+      ],
+      origin:
+        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
+      meanings: [
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition:
+                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
+              synonyms: [],
+              antonyms: ["1", "2", "3", "4"],
+            },
+            {
+              definition:
+                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
   ];
 
   return (
     <View nativeID='main-screen' style={styles.entireScreen}>
       {/*<NagivationContainer />*/}
-      {Foods.map((item, i) => {
-        if (i < currentIndex) {
-          return null;
-        } else if (i === currentIndex) {
-          return (
-            <Animated.View
-              key={i}
-              style={[
-                styles.testContainer,
-                {
-                  transform: [
-                    { rotate: rotateX },
-                    ...position.getTranslateTransform(),
-                  ],
-                },
-              ]}
-              {...panResponder.panHandlers}
-            >
+      {test
+        .map((item, i) => {
+          if (i < currentIndex) {
+            return null;
+          } else if (i === currentIndex) {
+            return (
               <Animated.View
-                style={{
-                  opacity: likeOpacity,
-                  transform: [{ rotate: "-30deg" }],
-                  position: "absolute",
-                  top: 50,
-                  left: 40,
-                  zIndex: 1000,
-                }}
+                key={i}
+                style={[
+                  styles.testContainer,
+                  {
+                    transform: [
+                      { rotate: rotateX },
+                      ...position.getTranslateTransform(),
+                    ],
+                  },
+                ]}
+                {...panResponder.panHandlers}
               >
-                <Text
+                <Animated.View
                   style={{
-                    borderWidth: 1,
-                    borderColor: "green",
-                    color: "green",
-                    fontSize: 32,
-                    fontWeight: "800",
-                    padding: 10,
+                    opacity: likeOpacity,
+                    transform: [{ rotate: "-30deg" }],
+                    position: "absolute",
+                    top: 50,
+                    left: 40,
+                    zIndex: 1000,
                   }}
                 >
-                  Yes
-                </Text>
-              </Animated.View>
+                  <Text style={styles.yesText}>Yes</Text>
+                </Animated.View>
 
-              <Animated.View
-                style={{
-                  opacity: nopeOpacity,
-                  transform: [{ rotate: "30deg" }],
-                  position: "absolute",
-                  top: 50,
-                  right: 40,
-                  zIndex: 1000,
-                }}
-              >
-                <Text
+                <Animated.View
                   style={{
-                    borderWidth: 1,
-                    borderColor: "red",
-                    color: "red",
-                    fontSize: 32,
-                    fontWeight: "800",
-                    padding: 10,
+                    opacity: nopeOpacity,
+                    transform: [{ rotate: "30deg" }],
+                    position: "absolute",
+                    top: 50,
+                    right: 40,
+                    zIndex: 1000,
                   }}
                 >
-                  NOPE
-                </Text>
+                  <Text style={styles.nopeText}>NOPE</Text>
+                </Animated.View>
+                <FlipVocaCard wordObj={item} />
               </Animated.View>
-              <Text>{item.id}</Text>
-            </Animated.View>
-          );
-        } else {
-          return (
-            <Animated.View
-              key={i}
-              style={[
-                styles.testContainer,
-                {
-                  opacity: nextCardOpacity,
-                  transform: [{ scale: nextCardScale }],
-                  padding: 10,
-                  position: "absolute",
-                },
-              ]}
-            >
-              <Text>{item.id}</Text>
-            </Animated.View>
-          );
-        }
-      }).reverse()}
-
-      {/*<FlipVocaCard wordObj={test} />*/}
+            );
+          } else {
+            return (
+              <Animated.View
+                key={i}
+                style={[
+                  styles.testContainer,
+                  {
+                    opacity: nextCardOpacity,
+                    transform: [{ scale: nextCardScale }],
+                    padding: 10,
+                    position: "absolute",
+                  },
+                ]}
+              >
+                <FlipVocaCard wordObj={item} />
+              </Animated.View>
+            );
+          }
+        })
+        .reverse()}
     </View>
   );
 }

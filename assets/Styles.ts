@@ -12,7 +12,7 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   entireContainer: {
-    width: windowWidth,
+    width: windowWidth * 0.5,
     height: windowHeight * 0.7,
     borderWidth: 5,
     borderStyle: "solid",
@@ -21,10 +21,25 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
+  nopeText: {
+    borderWidth: 1,
+    borderColor: "red",
+    color: "red",
+    fontSize: 32,
+    fontWeight: "800",
+    padding: 10,
+  },
+  yesText: {
+    borderWidth: 1,
+    borderColor: "green",
+    color: "green",
+    fontSize: 32,
+    fontWeight: "800",
+    padding: 10,
+  },
   /* Testing */
   testContainer: {
-    width: windowWidth,
+    width: windowWidth * 0.5,
     height: windowHeight * 0.7,
     padding: 10,
     borderWidth: 5,
@@ -34,12 +49,13 @@ export default StyleSheet.create({
   },
   /**FlipVocaCard.tsx style attributes */
   card: {
-    width: windowWidth * 0.8,
-    height: windowHeight * 0.7,
+    width: windowWidth * 0.4,
+    height: windowHeight * 0.6,
+    padding: 10,
     borderWidth: 5,
     borderStyle: "solid",
-    borderColor: "red",
-    flex: 1,
+    borderColor: "black",
+    position: "absolute",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
