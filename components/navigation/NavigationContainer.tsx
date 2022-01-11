@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import styles from "../../assets/Styles";
+import { VocaValueProps } from "../../assets/Interfaces";
 
-export default function NavigationContainer() {
+interface naviProps {
+  handleNewWord: (newWord: VocaValueProps) => void;
+}
+export default function NavigationContainer(handleNewWord: naviProps) {
   const [search, setSearch] = useState("");
   const [responseJson, setResponseJson] = useState({});
 
@@ -21,6 +25,7 @@ export default function NavigationContainer() {
       .then((responseJson) => {
         console.log(responseJson);
         setResponseJson(responseJson);
+        handleNewWord(responseJson);
       }).catch;
     (error: string) => {
       console.log(error);

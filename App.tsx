@@ -12,7 +12,7 @@ import NagivationContainer from "./components/navigation/NavigationContainer";
 import styles from "./assets/Styles";
 import DismissKeyboard from "./components/DismissKeyboard";
 import React, { useRef, useState } from "react";
-
+import { VocaValueProps } from "./assets/Interfaces";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -91,173 +91,18 @@ export default function App() {
     })
   ).current;
 
-  var test = [
-    {
-      word: "apple1",
-      phonetic: "ˈap(ə)l",
-      phonetics: [
-        {
-          text: "ˈap(ə)l",
-          audio:
-            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-        },
-      ],
-      origin:
-        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-      meanings: [
-        {
-          partOfSpeech: "noun",
-          definitions: [
-            {
-              definition:
-                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-              synonyms: [],
-              antonyms: ["1", "2", "3", "4"],
-            },
-            {
-              definition:
-                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-              synonyms: [],
-              antonyms: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      word: "apple2",
-      phonetic: "ˈap(ə)l",
-      phonetics: [
-        {
-          text: "ˈap(ə)l",
-          audio:
-            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-        },
-      ],
-      origin:
-        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-      meanings: [
-        {
-          partOfSpeech: "noun",
-          definitions: [
-            {
-              definition:
-                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-              synonyms: [],
-              antonyms: ["1", "2", "3", "4"],
-            },
-            {
-              definition:
-                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-              synonyms: [],
-              antonyms: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      word: "apple3",
-      phonetic: "ˈap(ə)l",
-      phonetics: [
-        {
-          text: "ˈap(ə)l",
-          audio:
-            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-        },
-      ],
-      origin:
-        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-      meanings: [
-        {
-          partOfSpeech: "noun",
-          definitions: [
-            {
-              definition:
-                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-              synonyms: [],
-              antonyms: ["1", "2", "3", "4"],
-            },
-            {
-              definition:
-                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-              synonyms: [],
-              antonyms: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      word: "apple4",
-      phonetic: "ˈap(ə)l",
-      phonetics: [
-        {
-          text: "ˈap(ə)l",
-          audio:
-            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-        },
-      ],
-      origin:
-        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-      meanings: [
-        {
-          partOfSpeech: "noun",
-          definitions: [
-            {
-              definition:
-                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-              synonyms: [],
-              antonyms: ["1", "2", "3", "4"],
-            },
-            {
-              definition:
-                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-              synonyms: [],
-              antonyms: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      word: "apple5",
-      phonetic: "ˈap(ə)l",
-      phonetics: [
-        {
-          text: "ˈap(ə)l",
-          audio:
-            "//ssl.gstatic.com/dictionary/static/sounds/20200429/apple--_gb_1.mp3",
-        },
-      ],
-      origin:
-        "Old English æppel, of Germanic origin; related to Dutch appel and German Apfel .",
-      meanings: [
-        {
-          partOfSpeech: "noun",
-          definitions: [
-            {
-              definition:
-                "the round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.",
-              synonyms: [],
-              antonyms: ["1", "2", "3", "4"],
-            },
-            {
-              definition:
-                "the tree bearing apples, with hard pale timber that is used in carpentry and to smoke food.",
-              synonyms: [],
-              antonyms: [],
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
+  const [words, setWords] = useState<VocaValueProps[]>([]);
+  const getWordFromAPI = (newWord: VocaValueProps) => {
+    if (words === undefined) {
+      setWords([newWord]);
+    } else {
+      setWords((words) => [...words, newWord]);
+    }
+  };
   return (
     <View nativeID='main-screen' style={styles.entireScreen}>
-      {/*<NagivationContainer />*/}
-      {test
+      <NagivationContainer handleNewWord={getWordFromAPI} />
+      {words
         .map((item, i) => {
           if (i < currentIndex) {
             return null;
@@ -318,7 +163,7 @@ export default function App() {
                   },
                 ]}
               >
-                <FlipVocaCard ref={panResponder} wordObj={item} />
+                <FlipVocaCard innerRef={panResponder} wordObj={item} />
               </Animated.View>
             );
           }
