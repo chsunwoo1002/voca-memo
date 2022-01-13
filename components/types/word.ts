@@ -1,4 +1,4 @@
-export interface VocaValueProps {
+export interface VocabularyType {
   wordObj: {
     word: string;
     phonetic: string;

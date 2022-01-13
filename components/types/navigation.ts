@@ -1,5 +1,5 @@
-import { VocaValueProps } from "./word";
+import { VocabularyType } from "./word";
 
 export interface NavigationProp {
-  handleNewWord: (newWord: VocaValueProps) => void;
+  handleNewWord: (newWord: VocabularyType) => void;
 }

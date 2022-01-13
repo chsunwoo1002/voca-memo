@@ -5,6 +5,9 @@ const windowHeight = Dimensions.get("window").height;
 
 export default StyleSheet.create({
   /**App.tsx style attributes */
+  safeArea: {
+    flex: 1,
+  },
   entireScreen: {
     width: windowWidth,
     height: windowHeight,

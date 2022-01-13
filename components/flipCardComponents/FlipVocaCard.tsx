@@ -9,16 +9,16 @@ import {
 import { useState, useRef } from "react";
 import FlipCard from "react-native-flip-card";
 import {
-  VocaValueProps,
-  phoneticType,
-  meaning,
-  definition,
+  VocabularyType,
+  PhoneticType,
+  MeaningType,
+  DefinitionType,
 } from "../types/word";
 import styles from "../styles/Styles";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function FlipVocaCard(
-  { wordObj }: VocaValueProps,
+  { wordObj }: VocabularyType,
   innerRef: any
 ) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
@@ -83,12 +83,12 @@ export default function FlipVocaCard(
         }}
       >
         <Text>Origin: {wordObj.origin}</Text>
-        {wordObj.meanings.map((meaning: meaning, meanIdx: number) => {
+        {wordObj.meanings.map((meaning: MeaningType, meanIdx: number) => {
           return (
             <View key={meanIdx}>
               <Text>{meaning.partOfSpeech}</Text>
               {meaning.definitions.map(
-                (definition: definition, defIdx: number) => {
+                (definition: DefinitionType, defIdx: number) => {
                   return (
                     <View key={defIdx}>
                       <Text>{definition.definition}</Text>

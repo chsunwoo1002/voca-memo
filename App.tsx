@@ -6,18 +6,42 @@ import {
   Dimensions,
   Animated,
   PanResponder,
+  SafeAreaView,
 } from "react-native";
 import FlipVocaCard from "./components/flipCardComponents/FlipVocaCard";
 import NagivationContainer from "./components/navigation/NavigationContainer";
 import styles from "./components/styles/Styles";
 import DismissKeyboard from "./components/DismissKeyboard";
 import React, { useRef, useState } from "react";
-import { VocaValueProps } from "./components/types/word";
-
+import { VocabularyType } from "./components/types/word";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  Oswald_200ExtraLight,
+  Oswald_300Light,
+  Oswald_400Regular,
+  Oswald_500Medium,
+  Oswald_600SemiBold,
+  Oswald_700Bold,
+} from "@expo-google-fonts/oswald";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function App() {
+  let [fontsLoaded, error] = useFonts({
+    Oswald_200ExtraLight,
+    Oswald_300Light,
+    Oswald_400Regular,
+    Oswald_500Medium,
+    Oswald_600SemiBold,
+    Oswald_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+  const [isNewFeed, setIsNewFeed] = useState(false);
   const position = useRef(new Animated.ValueXY()).current;
   const [currentIndex, setCurrentIndex] = useState(0);
   const panResponder = useRef(
@@ -92,9 +116,9 @@ export default function App() {
     })
   ).current;
 
-  const [words, setWords] = useState<VocaValueProps[]>([]);
+  const [words, setWords] = useState<VocabularyType[]>([]);
 
-  const getWordFromAPI = (newWord: VocaValueProps) => {
+  const getWordFromAPI = (newWord: VocabularyType) => {
     if (words === undefined) {
       setWords([newWord]);
     } else {
@@ -104,75 +128,82 @@ export default function App() {
   console.log("main componenet");
   console.log(words);
   return (
-    <View nativeID='main-screen' style={styles.entireScreen}>
-      <NagivationContainer handleNewWord={getWordFromAPI} />
-      {words
-        .map((item, i) => {
-          if (i < currentIndex) {
-            return null;
-          } else if (i === currentIndex) {
-            return (
-              <Animated.View
-                key={i}
-                style={[
-                  styles.testContainer,
-                  {
-                    transform: [
-                      { rotate: rotateX },
-                      ...position.getTranslateTransform(),
-                    ],
-                  },
-                ]}
-                {...panResponder.panHandlers}
-              >
-                <Animated.View
-                  style={{
-                    opacity: likeOpacity,
-                    transform: [{ rotate: "-30deg" }],
-                    position: "absolute",
-                    top: 50,
-                    left: 40,
-                    zIndex: 1000,
-                  }}
-                >
-                  <Text style={styles.yesText}>Yes</Text>
-                </Animated.View>
+    <SafeAreaView style={styles.safeArea}>
+      <View nativeID='main-screen' style={styles.entireScreen}>
+        <Text style={{ fontFamily: "Oswald_400Regular", fontb }}>
+          just checking
+        </Text>
+        <NagivationContainer handleNewWord={getWordFromAPI} />
+        {isNewFeed}
+        {words &&
+          words
+            .map((item, i) => {
+              if (i < currentIndex) {
+                return null;
+              } else if (i === currentIndex) {
+                return (
+                  <Animated.View
+                    key={i}
+                    style={[
+                      styles.testContainer,
+                      {
+                        transform: [
+                          { rotate: rotateX },
+                          ...position.getTranslateTransform(),
+                        ],
+                      },
+                    ]}
+                    {...panResponder.panHandlers}
+                  >
+                    <Animated.View
+                      style={{
+                        opacity: likeOpacity,
+                        transform: [{ rotate: "-30deg" }],
+                        position: "absolute",
+                        top: 50,
+                        left: 40,
+                        zIndex: 1000,
+                      }}
+                    >
+                      <Text style={styles.yesText}>Yes</Text>
+                    </Animated.View>
 
-                <Animated.View
-                  style={{
-                    opacity: nopeOpacity,
-                    transform: [{ rotate: "30deg" }],
-                    position: "absolute",
-                    top: 50,
-                    right: 40,
-                    zIndex: 1000,
-                  }}
-                >
-                  <Text style={styles.nopeText}>NOPE</Text>
-                </Animated.View>
-                <FlipVocaCard innerRef={panResponder} wordObj={item} />
-              </Animated.View>
-            );
-          } else {
-            return (
-              <Animated.View
-                key={i}
-                style={[
-                  styles.testContainer,
-                  {
-                    opacity: nextCardOpacity,
-                    transform: [{ scale: nextCardScale }],
-                    padding: 10,
-                    position: "absolute",
-                  },
-                ]}
-              >
-                <FlipVocaCard innerRef={panResponder} wordObj={item} />
-              </Animated.View>
-            );
-          }
-        })
-        .reverse()}
-    </View>
+                    <Animated.View
+                      style={{
+                        opacity: nopeOpacity,
+                        transform: [{ rotate: "30deg" }],
+                        position: "absolute",
+                        top: 50,
+                        right: 40,
+                        zIndex: 1000,
+                      }}
+                    >
+                      <Text style={styles.nopeText}>NOPE</Text>
+                    </Animated.View>
+                    <FlipVocaCard innerRef={panResponder} wordObj={item} />
+                  </Animated.View>
+                );
+              } else {
+                return (
+                  <Animated.View
+                    key={i}
+                    style={[
+                      styles.testContainer,
+                      {
+                        opacity: nextCardOpacity,
+                        transform: [{ scale: nextCardScale }],
+                        padding: 10,
+                        position: "absolute",
+                      },
+                    ]}
+                  >
+                    <FlipVocaCard innerRef={panResponder} wordObj={item} />
+                  </Animated.View>
+                );
+              }
+            })
+            .reverse()}
+      </View>
+    </SafeAreaView>
   );
 }
