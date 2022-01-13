@@ -9,10 +9,11 @@ import {
 } from "react-native";
 import FlipVocaCard from "./components/flipCardComponents/FlipVocaCard";
 import NagivationContainer from "./components/navigation/NavigationContainer";
-import styles from "./assets/Styles";
+import styles from "./components/styles/Styles";
 import DismissKeyboard from "./components/DismissKeyboard";
 import React, { useRef, useState } from "react";
-import { VocaValueProps } from "./assets/Interfaces";
+import { VocaValueProps } from "./components/types/word";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -92,6 +93,7 @@ export default function App() {
   ).current;
 
   const [words, setWords] = useState<VocaValueProps[]>([]);
+
   const getWordFromAPI = (newWord: VocaValueProps) => {
     if (words === undefined) {
       setWords([newWord]);
@@ -99,6 +101,8 @@ export default function App() {
       setWords((words) => [...words, newWord]);
     }
   };
+  console.log("main componenet");
+  console.log(words);
   return (
     <View nativeID='main-screen' style={styles.entireScreen}>
       <NagivationContainer handleNewWord={getWordFromAPI} />

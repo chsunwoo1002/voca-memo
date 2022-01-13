@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import styles from "../../assets/Styles";
-import { VocaValueProps } from "../../assets/Interfaces";
+import styles from "../styles/Styles";
+import { VocaValueProps } from "../types/word";
+import { NavigationProp } from "../types/navigation";
 
-interface naviProps {
-  handleNewWord: (newWord: VocaValueProps) => void;
-}
-export default function NavigationContainer(handleNewWord: naviProps) {
+const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
   const [search, setSearch] = useState("");
   const [responseJson, setResponseJson] = useState({});
 
@@ -23,7 +21,6 @@ export default function NavigationContainer(handleNewWord: naviProps) {
         return response.json();
       })
       .then((responseJson) => {
-        console.log(responseJson);
         setResponseJson(responseJson);
         handleNewWord(responseJson);
       }).catch;
@@ -45,4 +42,6 @@ export default function NavigationContainer(handleNewWord: naviProps) {
       </Pressable>
     </View>
   );
-}
+};
+
+export default NavigationContainer;

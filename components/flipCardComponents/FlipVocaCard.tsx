@@ -13,8 +13,8 @@ import {
   phoneticType,
   meaning,
   definition,
-} from "../../assets/Interfaces";
-import styles from "../../assets/Styles";
+} from "../types/word";
+import styles from "../styles/Styles";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function FlipVocaCard(

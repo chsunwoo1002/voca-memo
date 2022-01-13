@@ -2,23 +2,23 @@ export interface VocaValueProps {
   wordObj: {
     word: string;
     phonetic: string;
-    phonetics: Array<phoneticType>;
+    phonetics: Array<PhoneticType>;
     origin: string;
-    meanings: Array<meaning>;
+    meanings: Array<MeaningType>;
   };
 }
 
-export interface phoneticType {
+export interface PhoneticType {
   text: string;
   audio: string;
 }
 
-export interface meaning {
+export interface MeaningType {
   partOfSpeech: string;
-  definitions: Array<definition>;
+  definitions: Array<DefinitionType>;
 }
 
-export interface definition {
+export interface DefinitionType {
   definition: string;
   synonym?: Array<string> | never[];
   antonym?: Array<string> | never[];
