@@ -22,9 +22,11 @@ import {
   Oswald_600SemiBold,
   Oswald_700Bold,
 } from "@expo-google-fonts/oswald";
+
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import FeedContainer from "./components/FeedContainer";
+import Footer from "./components/Footer";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -53,6 +55,7 @@ export default function App() {
       {/*!fontsLoaded && <AppLoading />*/}
       <NagivationContainer handleNewWord={getWordFromAPI} />
       <FeedContainer word={newWord} />
+      <Footer />
     </SafeAreaView>
   );
 }
