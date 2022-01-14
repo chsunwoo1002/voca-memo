@@ -12,7 +12,6 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
 
   const updateSearch = (search: string) => {
     setSearch(search);
-    console.log(search);
   };
 
   const getWordFromAPI = () => {

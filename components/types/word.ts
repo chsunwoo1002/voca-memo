@@ -23,3 +23,7 @@ export interface DefinitionType {
   synonym?: Array<string> | never[];
   antonym?: Array<string> | never[];
 }
+
+export interface FilpCardProps {
+  word: VocabularyType;
+}

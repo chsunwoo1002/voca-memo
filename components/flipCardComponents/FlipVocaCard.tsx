@@ -9,18 +9,17 @@ import {
 import { useState, useRef } from "react";
 import FlipCard from "react-native-flip-card";
 import {
+  FilpCardProps,
   VocabularyType,
   PhoneticType,
   MeaningType,
   DefinitionType,
 } from "../types/word";
 import styles from "../styles/Styles";
+
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function FlipVocaCard(
-  { wordObj }: VocabularyType,
-  innerRef: any
-) {
+const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const flipAnimation = useRef(new Animated.Value(0)).current;
   let flipRotation = 0;
@@ -61,7 +60,6 @@ export default function FlipVocaCard(
   };
   return (
     <AnimatedPressable
-      {...innerRef.panHandlers}
       onPress={() => (!!flipRotation ? flipToBack() : flipToFront())}
     >
       <Animated.View
@@ -71,8 +69,8 @@ export default function FlipVocaCard(
           ...flipToBackStyle,
         }}
       >
-        <Text>{wordObj.word}</Text>
-        <Text>{wordObj.phonetic}</Text>
+        <Text>{word.wordObj.word}</Text>
+        <Text>{word.wordObj.phonetic}</Text>
         <Text>audio needs to be implemented</Text>
       </Animated.View>
       <Animated.View
@@ -82,8 +80,8 @@ export default function FlipVocaCard(
           ...flipToFrontStyle,
         }}
       >
-        <Text>Origin: {wordObj.origin}</Text>
-        {wordObj.meanings.map((meaning: MeaningType, meanIdx: number) => {
+        <Text>Origin: {word.wordObj.origin}</Text>
+        {word.wordObj.meanings.map((meaning: MeaningType, meanIdx: number) => {
           return (
             <View key={meanIdx}>
               <Text>{meaning.partOfSpeech}</Text>
@@ -103,41 +101,6 @@ export default function FlipVocaCard(
       </Animated.View>
     </AnimatedPressable>
   );
-}
+};
 
-/**
- * 
- * return (
-    <Animated.View>
-      <FlipCard style={styles.card}>
-        {/* Face Side }
-        <View style={styles.card}>
-          <Text>{wordObj.word}</Text>
-          <Text>{wordObj.phonetic}</Text>
-          <Text>audio needs to be implemented</Text>
-        </View>
-        {/* Back Side }
-        <View style={styles.card}>
-          <Text>Origin: {wordObj.origin}</Text>
-          {wordObj.meanings.map((meaning: meaning, meanIdx: number) => {
-            return (
-              <View key={meanIdx}>
-                <Text>{meaning.partOfSpeech}</Text>
-                {meaning.definitions.map(
-                  (definition: definition, defIdx: number) => {
-                    return (
-                      <View key={defIdx}>
-                        <Text>{definition.definition}</Text>
-                        {/* Need to implement synonym and antonym }
-                      </View>
-                    );
-                  }
-                )}
-              </View>
-            );
-          })}
-        </View>
-      </FlipCard>
-    </Animated.View>
-  );
- */
+export default FlipVocaCard;
