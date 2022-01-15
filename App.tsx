@@ -43,11 +43,10 @@ export default function App() {
   const position = useRef(new Animated.ValueXY()).current;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isNewFeed, setIsNewFeed] = useState(false);
-
-  const [newWord, setNewWord] = useState<VocabularyType>();
+  const [newWord, setNewWord] = useState<Array<VocabularyType>>();
 
   const getWordFromAPI = (newWord: Array<VocabularyType>) => {
-    setNewWord(newWord[0]);
+    setNewWord(newWord);
   };
   console.log(setNewWord);
   return (
