@@ -17,7 +17,12 @@ export default StyleSheet.create({
     margin: 10,
     borderColor: "#000000",
     borderWidth: 1,
+    justifyContent: "center",
+    alignContent: "center",
   },
-  footerButtonIcon: {},
+  footerButtonIcon: {
+    width: "70%",
+    height: "70%",
+  },
   footerButtonText: {},
 });
