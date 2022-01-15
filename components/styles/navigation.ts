@@ -12,6 +12,7 @@ export default StyleSheet.create({
     borderWidth: 3,
     marginTop: 15,
     padding: 20,
+    position: "absolute",
     textAlign: "left",
   },
 });
