@@ -15,7 +15,7 @@ import {
   MeaningType,
   DefinitionType,
 } from "../types/word";
-import styles from "../styles/Styles";
+import styles from "../styles/feed";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

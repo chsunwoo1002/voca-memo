@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import styles from "../styles/navigation";
-import { VocabularyType } from "../types/word";
-import { NavigationProp } from "../types/navigation";
+import styles from "./styles/navigation";
+import { VocabularyType } from "./types/word";
+import { NavigationProp } from "./types/navigation";
 
 const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
   const [search, setSearch] = useState("");
@@ -33,8 +33,8 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
       <TextInput
         style={styles.search}
         onChangeText={updateSearch}
-        placeholder='search here:)'
-        inlineImageLeft='search'
+        placeholder="search here:)"
+        inlineImageLeft="search"
         onSubmitEditing={getWordFromAPI}
       />
     </View>

@@ -2,7 +2,9 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   feedContainer: {},
-  feedComment: {},
+  feedExample: {},
+  feedActiveExampleContainer: {},
+  feedDeactiveExampleContainer: {},
   feedButtonsContainer: {},
   feedButton: {},
   feedButtonIcon: {},
