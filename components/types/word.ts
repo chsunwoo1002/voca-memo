@@ -1,16 +1,20 @@
 export interface VocabularyType {
-  wordObj: {
-    word: string;
-    phonetic: string;
-    phonetics: Array<PhoneticType>;
-    origin: string;
-    meanings: Array<MeaningType>;
-  };
+  word: string;
+  phonetic: string;
+  phonetics: Array<PhoneticType>;
+  origin: string;
+  meanings: Array<MeaningType>;
+}
+
+export interface ErrorType {
+  message: string;
+  resolution: string;
+  title: string;
 }
 
 export interface PhoneticType {
   text: string;
-  audio: string;
+  audio?: string;
 }
 
 export interface MeaningType {
@@ -20,6 +24,7 @@ export interface MeaningType {
 
 export interface DefinitionType {
   definition: string;
+  example: string;
   synonym?: Array<string> | never[];
   antonym?: Array<string> | never[];
 }

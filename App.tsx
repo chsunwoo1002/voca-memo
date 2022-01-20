@@ -1,18 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Animated,
-  PanResponder,
-  SafeAreaView,
-} from "react-native";
-import FlipVocaCard from "./components/flipCardComponents/FlipVocaCard";
-import NagivationContainer from "./components/navigation/NavigationContainer";
+import { StyleSheet, Dimensions, Animated, SafeAreaView } from "react-native";
+import NagivationContainer from "./components/NavigationContainer";
 import styles from "./components/styles/Styles";
 import React, { useRef, useState } from "react";
-import { VocabularyType } from "./components/types/word";
+import { VocabularyType, ErrorType } from "./components/types/word";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
   Oswald_200ExtraLight,
@@ -43,17 +34,440 @@ export default function App() {
   const position = useRef(new Animated.ValueXY()).current;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isNewFeed, setIsNewFeed] = useState(false);
-  const [newWord, setNewWord] = useState<Array<VocabularyType>>();
+  const [newWord, setNewWord] = useState<VocabularyType>();
+  const [isValid, setIsValid] = useState<boolean>(true);
 
-  const getWordFromAPI = (newWord: Array<VocabularyType>) => {
-    setNewWord(newWord);
+  var w = [
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      word: "hello",
+      phonetic: "həˈləʊ",
+      phonetics: [
+        {
+          text: "həˈləʊ",
+          audio:
+            "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3",
+        },
+        {
+          text: "hɛˈləʊ",
+        },
+      ],
+      origin:
+        "early 19th century: variant of earlier hollo ; related to holla.",
+      meanings: [
+        {
+          partOfSpeech: "exclamation",
+          definitions: [
+            {
+              definition:
+                "used as a greeting or to begin a phone conversation.",
+              example: "hello there, Katie!",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "noun",
+          definitions: [
+            {
+              definition: "an utterance of ‘hello’; a greeting.",
+              example: "she was getting polite nods and hellos from people",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+        {
+          partOfSpeech: "verb",
+          definitions: [
+            {
+              definition: "say or shout ‘hello’.",
+              example: "I pressed the phone button and helloed",
+              synonyms: [],
+              antonyms: [],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+  const getWordFromAPI = (newWord: VocabularyType | ErrorType) => {
+    if ("message" in newWord) {
+      setIsValid(false);
+    } else {
+      setNewWord(newWord);
+    }
   };
-  console.log(setNewWord);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       {/*!fontsLoaded && <AppLoading />*/}
       <NagivationContainer handleNewWord={getWordFromAPI} />
-      <FeedContainer word={newWord} />
+      <FeedContainer word={w} />
       <Footer />
     </SafeAreaView>
   );

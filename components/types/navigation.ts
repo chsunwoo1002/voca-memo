@@ -1,5 +1,5 @@
-import { VocabularyType } from "./word";
+import { VocabularyType, ErrorType } from "./word";
 
 export interface NavigationProp {
-  handleNewWord: (newWord: Array<VocabularyType>) => void;
+  handleNewWord: (newWord: VocabularyType | ErrorType) => void;
 }
