@@ -6,7 +6,7 @@ export default StyleSheet.create({
   },
   feedContainer: {
     width: "90%",
-    height: windowHeight * 0.6,
+    height: windowHeight * 0.55,
     borderColor: "#F0ECE3",
     borderWidth: 2,
     marginTop: 15,
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   feedFlip: {
     width: "90%",
-    height: "60%",
+    height: "65%",
     borderColor: "#F0ECE3",
     borderWidth: 1,
     marginTop: 5,
@@ -22,12 +22,17 @@ export default StyleSheet.create({
   feedExample: {},
   feedExampleText: {},
   feedActiveExamplesContainer: {
-    height: "30%",
+    height: "14%",
     width: "90%",
     borderColor: "#F4ac03",
     borderWidth: 1,
   },
-  feedDeactiveExampleContainer: {},
+  feedDeactiveExampleContainer: {
+    height: "14%",
+    width: "90%",
+    borderColor: "#F4ac03",
+    borderWidth: 1,
+  },
   feedButtonsContainer: {
     flexDirection: "row",
     width: "100%",
@@ -45,5 +50,21 @@ export default StyleSheet.create({
   feedButtonIcon: {
     width: "60%",
     height: "70%",
+  },
+  feedExampleContainer: {
+    paddingLeft: 10,
+    flexDirection: "row",
+    width: "100%",
+    height: "10%",
+
+    alignItems: "center",
+  },
+  feedExampleInput: {
+    width: "85%",
+    height: "90%",
+    borderRadius: 20,
+    borderColor: "#F0ECE3",
+    borderWidth: 3,
+    textAlign: "left",
   },
 });
