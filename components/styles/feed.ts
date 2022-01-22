@@ -67,4 +67,6 @@ export default StyleSheet.create({
     borderWidth: 3,
     textAlign: "left",
   },
+  feedExampleButton: {},
+  feedExampleButtonText: {},
 });

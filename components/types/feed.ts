@@ -8,7 +8,7 @@ export interface FeedProps {
   word: VocabularyType;
 }
 
-export interface FeedButtonProps {
-  icon: any;
+export interface FeedExampleButtonProps {
+  numOfExamples: number;
   onPress: () => void;
 }
