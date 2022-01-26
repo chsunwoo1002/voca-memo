@@ -104,23 +104,21 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
   } else {
     return (
       <View style={Styles.feedContainer}>
-        <View>
+        <View style={Styles.exampleIconContainer}>
           <IconButton
             onPress={switchToExampleCoponent}
             icon={feedIcons.back}
-            buttonStyle={Styles.feedButton}
-            feedButtonIconStyle={Styles.feedButtonIcon}
+            buttonStyle={Styles.exampleButton}
+            feedButtonIconStyle={Styles.exampleButtonIcon}
           />
         </View>
-        <View>
-          {examples.length > 0 && (
-            <View>
-              {examples.map((example, index) => {
-                return <ExampleCard key={index} example={example} />;
-              })}
-            </View>
-          )}
-        </View>
+        {examples.length > 0 && (
+          <View style={Styles.examplesContainer}>
+            {examples.map((example, index) => {
+              return <ExampleCard key={index} example={example} />;
+            })}
+          </View>
+        )}
       </View>
     );
   }

@@ -67,6 +67,33 @@ export default StyleSheet.create({
     borderWidth: 3,
     textAlign: "left",
   },
+  exampleIconContainer: {
+    width: "100%",
+    height: "10%",
+  },
+  exampleButton: {
+    width: "15%",
+    height: "100%",
+    margin: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  exampleButtonIcon: {
+    width: "60%",
+    height: "70%",
+  },
+  exampleIcon: {},
+  exampleContainer: {
+    width: "100%",
+    height: "10%",
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: "#F0ECE3",
+  },
+  examplesContainer: {
+    width: "100%",
+    height: "90%",
+  },
   feedExampleButton: {},
   feedExampleButtonText: {},
 });

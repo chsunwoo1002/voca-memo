@@ -8,7 +8,7 @@ interface ExampleCardProps {
 
 const ExampleCard: React.FC<ExampleCardProps> = ({ example }) => {
   return (
-    <View style={Styles.feedExample}>
+    <View style={Styles.exampleContainer}>
       <Text style={Styles.feedExampleText}>{example}</Text>
     </View>
   );
