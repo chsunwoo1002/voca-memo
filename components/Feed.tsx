@@ -49,8 +49,7 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
   if (!isExamplePage) {
     return (
       <View style={Styles.feedContainer}>
-        <View style={Styles.feedFlip}></View>
-        {/*<FlipVocaCard word={word} />*/}
+        <FlipVocaCard word={word} />
         <View style={Styles.feedButtonsContainer}>
           <IconButton
             onPress={playSound}

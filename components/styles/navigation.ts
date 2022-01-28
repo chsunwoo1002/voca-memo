@@ -3,6 +3,9 @@ import { StyleSheet, Dimensions } from "react-native";
 export default StyleSheet.create({
   searchContainer: {
     flex: 1,
+    width: "100%",
+    height: "15%",
+    alignItems: "center",
   },
   search: {
     width: 341,
@@ -14,5 +17,6 @@ export default StyleSheet.create({
     padding: 20,
     position: "absolute",
     textAlign: "left",
+    backgroundColor: "#FFFFFF",
   },
 });

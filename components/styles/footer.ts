@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   footerContainer: {
     width: "100%",
-    height: 100,
+    height: "10%",
     flexDirection: "row",
     position: "absolute",
     bottom: 0,

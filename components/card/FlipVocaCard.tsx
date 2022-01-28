@@ -61,6 +61,7 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
   return (
     <AnimatedPressable
       onPress={() => (!!flipRotation ? flipToBack() : flipToFront())}
+      style={styles.feedFlip}
     >
       <Animated.View
         style={{
@@ -69,19 +70,8 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
           ...flipToBackStyle,
         }}
       >
-        <Text>{word.wordObj.word}</Text>
-        <Text>{word.wordObj.phonetic}</Text>
-        <Text>audio needs to be implemented</Text>
-      </Animated.View>
-      <Animated.View
-        style={{
-          backgroundColor: "white",
-          backfaceVisibility: "hidden",
-          ...flipToFrontStyle,
-        }}
-      >
-        <Text>Origin: {word.wordObj.origin}</Text>
-        {word.wordObj.meanings.map((meaning: MeaningType, meanIdx: number) => {
+        <Text>Origin: {word.origin}</Text>
+        {word.meanings.map((meaning: MeaningType, meanIdx: number) => {
           return (
             <View key={meanIdx}>
               <Text>{meaning.partOfSpeech}</Text>
@@ -98,6 +88,17 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
             </View>
           );
         })}
+      </Animated.View>
+      <Animated.View
+        style={{
+          backgroundColor: "white",
+          backfaceVisibility: "hidden",
+          ...flipToFrontStyle,
+        }}
+      >
+        <Text>{word.word}</Text>
+        <Text>{word.phonetic}</Text>
+        <Text>audio needs to be implemented</Text>
       </Animated.View>
     </AnimatedPressable>
   );
