@@ -16,7 +16,7 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
 
   const getWordFromAPI = async () => {
     await fetch(
-      "https://api.dictionaryapi.dev/api/v2/entries/en_US/" + search,
+      `https://dictionary-api-flask.herokuapp.com/dictionary-api/v1/word?word=${search}&language=en-US`,
       {
         method: "GET",
       }
@@ -25,9 +25,7 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
         return await response.json();
       })
       .then((responseJson) => {
-        var [responseObj] = responseJson;
-
-        handleNewWord(responseObj);
+        handleNewWord(responseJson);
       })
       .catch((error: string) => {
         console.log(error);
@@ -42,6 +40,7 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
         placeholder='search here:)'
         inlineImageLeft='search'
         onSubmitEditing={getWordFromAPI}
+        clearButtonMode='always'
       />
     </View>
   );
