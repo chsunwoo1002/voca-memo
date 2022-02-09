@@ -71,7 +71,7 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
         }}
       >
         <Text>Origin: {word.origin}</Text>
-        {word.meanings.map((meaning: MeaningType, meanIdx: number) => {
+        {word.meaning.map((meaning: MeaningType, meanIdx: number) => {
           return (
             <View key={meanIdx}>
               <Text>{meaning.partOfSpeech}</Text>

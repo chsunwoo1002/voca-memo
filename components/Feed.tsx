@@ -55,19 +55,19 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
             onPress={playSound}
             icon={feedIcons.play}
             buttonStyle={Styles.feedButton}
-            feedButtonIconStyle={Styles.feedButtonIcon}
+            buttonIconStyle={Styles.feedButtonIcon}
           />
           <IconButton
             onPress={switchButtonValue}
             icon={feedIcons.like}
             buttonStyle={Styles.feedButton}
-            feedButtonIconStyle={Styles.feedButtonIcon}
+            buttonIconStyle={Styles.feedButtonIcon}
           />
           <IconButton
             onPress={switchButtonValue}
             icon={feedIcons.memorized}
             buttonStyle={Styles.feedButton}
-            feedButtonIconStyle={Styles.feedButtonIcon}
+            buttonIconStyle={Styles.feedButtonIcon}
           />
         </View>
         {examples.length > 0 ? (
@@ -94,7 +94,7 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
             onPress={submitUpdateExample}
             icon={feedIcons.add}
             buttonStyle={Styles.feedButton}
-            feedButtonIconStyle={Styles.feedButtonIcon}
+            buttonIconStyle={Styles.feedButtonIcon}
           />
         </View>
       </View>
@@ -107,7 +107,7 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
             onPress={switchToExampleCoponent}
             icon={feedIcons.back}
             buttonStyle={Styles.exampleButton}
-            feedButtonIconStyle={Styles.exampleButtonIcon}
+            buttonIconStyle={Styles.exampleButtonIcon}
           />
         </View>
         {examples.length > 0 && (

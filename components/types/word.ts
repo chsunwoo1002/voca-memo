@@ -1,10 +1,10 @@
 export interface VocabularyType {
   word: string;
-  phonetic: string;
+  phonetic?: string;
   type: string;
   phonetics: Array<PhoneticType>;
-  origin: string;
-  meanings: Array<MeaningType>;
+  origin?: string;
+  meaning: Array<MeaningType>;
 }
 
 export interface ErrorType {
@@ -24,9 +24,9 @@ export interface MeaningType {
 
 export interface DefinitionType {
   definition: string;
-  examples: Array<string>;
-  synonym?: Array<string> | never[];
-  antonym?: Array<string> | never[];
+  examples?: Array<string>;
+  synonyms?: Array<string> | never[];
+  antonyms?: Array<string> | never[];
 }
 
 export interface FilpCardProps {
