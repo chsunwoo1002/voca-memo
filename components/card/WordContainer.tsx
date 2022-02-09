@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import Styles from "../styles/feed";
+import Styles from "../styles/card";
 import { VocabularyType, ErrorType } from "../types/word";
 import IconButton from "./IconButton";
 
@@ -13,16 +13,14 @@ const wordIcons = {
 };
 const WordContainer: React.FC<WordContainerProps> = ({ word, onPress }) => {
   return (
-    <View style={Styles.exampleContainer}>
-      <View>
-        <IconButton
-          onPress={onPress}
-          icon={wordIcons.back}
-          buttonStyle={Styles.feedButton}
-          buttonIconStyle={Styles.feedButtonIcon}
-        ></IconButton>
-      </View>
-      <View>
+    <View style={Styles.wordContainer}>
+      <IconButton
+        onPress={onPress}
+        icon={wordIcons.back}
+        buttonStyle={Styles.buttonCotainer}
+        buttonIconStyle={Styles.buttonIcon}
+      />
+      <View style={Styles.textContainer}>
         <Text>{word.word}</Text>
         <Text>{word.phonetic}</Text>
       </View>
