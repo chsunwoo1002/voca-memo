@@ -6,12 +6,15 @@ import { IconButtonProps } from "../types/card";
 const IconButton: React.FC<IconButtonProps> = ({
   onPress,
   icon,
+  title,
   buttonStyle,
-  feedButtonIconStyle,
+  buttonIconStyle,
+  titleStyle,
 }) => {
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Image style={feedButtonIconStyle} source={icon} />
+      {icon && <Image style={buttonIconStyle} source={icon} />}
+      {title && <Text style={titleStyle}>{title}</Text>}
     </TouchableOpacity>
   );
 };

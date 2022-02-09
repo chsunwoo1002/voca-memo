@@ -72,7 +72,6 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
         </View>
         {examples.length > 0 ? (
           <View style={Styles.feedActiveExamplesContainer}>
-            <ExampleCard example={examples[0]} />
             <FeedExampleButton
               numOfExamples={examples.length}
               onPress={switchToExampleCoponent}

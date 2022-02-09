@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions } from "react-native";
 
 export default StyleSheet.create({
   searchContainer: {
+    zIndex: 10,
     flex: 1,
     width: "100%",
     height: "15%",

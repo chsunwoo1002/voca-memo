@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FooterProps } from "./types/footer";
 import { View } from "react-native";
 import styles from "./styles/footer";
-import FooterButton from "./card/FooterButton";
+import IconButton from "./card/IconButton";
 
 const Footer: React.FC<FooterProps> = () => {
   const footerIcons = {
@@ -13,25 +13,37 @@ const Footer: React.FC<FooterProps> = () => {
   };
   return (
     <View style={styles.footerContainer}>
-      <FooterButton
+      <IconButton
         onPress={() => console.log("button1 clicked")}
-        title="btn 1"
+        title='btn 1'
         icon={footerIcons.favourite}
+        buttonStyle={styles.footerButtonCotainer}
+        titleStyle={styles.footerButtonText}
+        buttonIconStyle={styles.footerButtonIcon}
       />
-      <FooterButton
+      <IconButton
         onPress={() => console.log("button2 clicked")}
-        title="btn 2"
+        title='btn 2'
         icon={footerIcons.doneAll}
+        buttonStyle={styles.footerButtonCotainer}
+        titleStyle={styles.footerButtonText}
+        buttonIconStyle={styles.footerButtonIcon}
       />
-      <FooterButton
+      <IconButton
         onPress={() => console.log("button3 clicked")}
-        title="btn 3"
+        title='btn 3'
         icon={footerIcons.language}
+        buttonStyle={styles.footerButtonCotainer}
+        titleStyle={styles.footerButtonText}
+        buttonIconStyle={styles.footerButtonIcon}
       />
-      <FooterButton
+      <IconButton
         onPress={() => console.log("button4 clicked")}
-        title="btn 4"
+        title='btn 4'
         icon={footerIcons.shuffle}
+        buttonStyle={styles.footerButtonCotainer}
+        titleStyle={styles.footerButtonText}
+        buttonIconStyle={styles.footerButtonIcon}
       />
     </View>
   );

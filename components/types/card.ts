@@ -1,8 +1,10 @@
-import { StyleProp, ViewStyle, ImageStyle } from "react-native";
+import { StyleProp, ViewStyle, ImageStyle, TextStyle } from "react-native";
 
 export interface IconButtonProps {
-  icon: any;
+  icon?: any;
   onPress: () => void;
   buttonStyle: StyleProp<ViewStyle>;
-  feedButtonIconStyle: StyleProp<ImageStyle>;
+  buttonIconStyle?: StyleProp<ImageStyle>;
+  title?: string;
+  titleStyle?: StyleProp<TextStyle>;
 }

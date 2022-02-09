@@ -18,6 +18,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import FeedContainer from "./components/FeedContainer";
 import Footer from "./components/Footer";
+import ErrorMessageContainer from "./components/card/ErrorMessageContainer";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -32,11 +33,11 @@ export default function App() {
   // });
 
   const position = useRef(new Animated.ValueXY()).current;
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isNewFeed, setIsNewFeed] = useState(false);
-  const [newWord, setNewWord] = useState<VocabularyType>();
+  const [isNewWord, setIsNewWord] = useState(false);
+  const [newWord, setNewWord] = useState<VocabularyType | ErrorType>();
   const [isValid, setIsValid] = useState<boolean>(true);
-
+  var errorMessage = "Oops, something went wrong in API, please try again";
   var w = [
     {
       word: "hello",
@@ -456,17 +457,21 @@ export default function App() {
     },
   ];
   const getWordFromAPI = (newWord: VocabularyType | ErrorType) => {
-    if ("message" in newWord) {
+    if (newWord.type === "error") {
       setIsValid(false);
     } else {
+      console.log(newWord);
       setNewWord(newWord);
+      setIsValid(true);
+      setIsNewWord(true);
     }
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/*!fontsLoaded && <AppLoading />*/}
       <NagivationContainer handleNewWord={getWordFromAPI} />
+      {!isValid && <ErrorMessageContainer msg={errorMessage} />}
+      {isValid && <></>}
       <FeedContainer word={w} />
       <Footer />
     </SafeAreaView>

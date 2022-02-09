@@ -1,15 +1,15 @@
 export interface VocabularyType {
   word: string;
   phonetic: string;
+  type: string;
   phonetics: Array<PhoneticType>;
   origin: string;
   meanings: Array<MeaningType>;
 }
 
 export interface ErrorType {
-  message: string;
-  resolution: string;
-  title: string;
+  information: string;
+  type: string;
 }
 
 export interface PhoneticType {
@@ -24,7 +24,7 @@ export interface MeaningType {
 
 export interface DefinitionType {
   definition: string;
-  example: string;
+  examples: Array<string>;
   synonym?: Array<string> | never[];
   antonym?: Array<string> | never[];
 }
