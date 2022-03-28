@@ -4,7 +4,10 @@ import { View } from "react-native";
 import styles from "./styles/footer";
 import IconButton from "./card/IconButton";
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({
+  handleFavoriteWords,
+  handleMemorizedWords,
+}) => {
   const footerIcons = {
     favourite: require("../assets/icons/favourite.png"),
     doneAll: require("../assets/icons/done_all.png"),
@@ -14,7 +17,7 @@ const Footer: React.FC<FooterProps> = () => {
   return (
     <View style={styles.footerContainer}>
       <IconButton
-        onPress={() => console.log("button1 clicked")}
+        onPress={() => handleFavoriteWords}
         title='btn 1'
         icon={footerIcons.favourite}
         buttonStyle={styles.footerButtonCotainer}
@@ -22,7 +25,7 @@ const Footer: React.FC<FooterProps> = () => {
         buttonIconStyle={styles.footerButtonIcon}
       />
       <IconButton
-        onPress={() => console.log("button2 clicked")}
+        onPress={() => handleMemorizedWords}
         title='btn 2'
         icon={footerIcons.doneAll}
         buttonStyle={styles.footerButtonCotainer}

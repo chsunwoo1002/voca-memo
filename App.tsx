@@ -24,18 +24,11 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function App() {
-  // let [fontsLoaded, error] = useFonts({
-  //   Oswald_200ExtraLight,
-  //   Oswald_300Light,
-  //   Oswald_400Regular,
-  //   Oswald_500Medium,
-  //   Oswald_600SemiBold,
-  //   Oswald_700Bold,
-  // });
-
   const position = useRef(new Animated.ValueXY()).current;
   const [isNewFeed, setIsNewFeed] = useState(false);
   const [isNewWord, setIsNewWord] = useState(false);
+  const [memorizedWords, setMemorizedWords] = useState<Array<VocabularyType>>();
+  const [favouriteWords, setFavouriteWords] = useState<Array<VocabularyType>>();
   const [newWord, setNewWord] = useState<VocabularyType>();
   const [isValid, setIsValid] = useState<boolean>(true);
   var errorMessage = "Oops, something went wrong in API, please try again";
@@ -487,17 +480,23 @@ export default function App() {
     setIsNewWord(true);
   };
 
+  const getMemorizedWords = (words: Array<VocabularyType>) => {
+    setMemorizedWords(words);
+  };
+  const getFavouriteWords = (words: Array<VocabularyType>) => {
+    setMemorizedWords(words);
+  };
   return (
     <SafeAreaView style={styles.safeArea}>
       <NagivationContainer handleNewWord={getWordFromAPI} />
       {isNewWord && newWord && (
-        <WordContainer
-          word={newWord}
-          onPress={() => setIsValid(false)}
-        ></WordContainer>
+        <WordContainer word={newWord} onPress={() => setIsValid(false)} />
       )}
       <FeedContainer word={test} />
-      <Footer />
+      <Footer
+        handleFavoriteWords={getFavouriteWords}
+        handleMemorizedWords={getMemorizedWords}
+      />
     </SafeAreaView>
   );
 }
