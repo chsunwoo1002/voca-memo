@@ -7,6 +7,7 @@ import IconButton from "./card/IconButton";
 const Footer: React.FC<FooterProps> = ({
   handleFavoriteWords,
   handleMemorizedWords,
+  testAPIf,
 }) => {
   const footerIcons = {
     favourite: require("../assets/icons/favourite.png"),
@@ -14,10 +15,31 @@ const Footer: React.FC<FooterProps> = ({
     language: require("../assets/icons/language.png"),
     shuffle: require("../assets/icons/shuffle.png"),
   };
+  const { APP_BASE_URL } = process.env;
+
+  const getData = async (
+    url: string = "http://192.168.1.64:4444/",
+    data = {}
+  ) => {
+    const u = APP_BASE_URL ? APP_BASE_URL : "http://192.168.1.64:123213/";
+    const res = await fetch(u, {
+      method: "GET",
+    })
+      .then(async (response) => {
+        return await response.json();
+      })
+      .then((responseJson) => {
+        console.log(responseJson);
+      })
+      .catch((error: string) => {
+        console.log(error);
+      });
+  };
+
   return (
     <View style={styles.footerContainer}>
       <IconButton
-        onPress={() => handleFavoriteWords}
+        onPress={getData}
         title='btn 1'
         icon={footerIcons.favourite}
         buttonStyle={styles.footerButtonCotainer}

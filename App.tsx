@@ -480,6 +480,9 @@ export default function App() {
     setIsNewWord(true);
   };
 
+  const testAPI = (s: String) => {
+    console.log(s);
+  };
   const getMemorizedWords = (words: Array<VocabularyType>) => {
     setMemorizedWords(words);
   };
@@ -496,6 +499,7 @@ export default function App() {
       <Footer
         handleFavoriteWords={getFavouriteWords}
         handleMemorizedWords={getMemorizedWords}
+        testAPIf={testAPI}
       />
     </SafeAreaView>
   );
