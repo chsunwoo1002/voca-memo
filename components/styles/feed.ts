@@ -3,6 +3,7 @@ import { windowWidth, windowHeight } from "./window";
 export default StyleSheet.create({
   feedsContainer: {
     alignItems: "center",
+    paddingTop: 70,
   },
   feedContainer: {
     width: "90%",
