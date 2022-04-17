@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text } from "react-native";
-import Styles from "../styles/feed";
+import React from 'react';
+import { View, Text } from 'react-native';
+import Styles from '../styles/feed';
 
 interface ExampleCardProps {
   example: string;

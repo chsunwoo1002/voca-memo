@@ -1,4 +1,4 @@
-import { VocabularyType } from "./word";
+import { VocabularyType } from '../../common/types/word';
 
 export interface FeedContainerProps {
   word: Array<VocabularyType> | undefined;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import Feed from "./Feed";
-import { FeedContainerProps } from "./types/feed";
-import { VocabularyType } from "./types/word";
-import Styles from "./styles/feed";
+import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
+import Feed from '../Feed';
+import { FeedContainerProps } from '../../types/feed';
+import { VocabularyType } from '../../common/types/word';
+import Styles from '../styles/feed';
 
 const FeedContainer: React.FC<FeedContainerProps> = ({ word }) => {
   const [words, setWords] = useState<Array<VocabularyType>>([]);

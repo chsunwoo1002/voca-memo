@@ -7,10 +7,10 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import NagivationContainer from './components/NavigationContainer';
-import styles from './components/styles/Styles';
+import NagivationContainer from './src/searchbar/NavigationContainer';
+import styles from './src/common/styles/Styles';
 import React, { useRef, useState } from 'react';
-import { VocabularyType, ErrorType } from './components/types/word';
+import { VocabularyType, ErrorType } from './src/common/types/word';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   Oswald_200ExtraLight,
@@ -23,10 +23,10 @@ import {
 
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import FeedContainer from './components/FeedContainer';
-import Footer from './components/Footer';
-import ErrorMessageContainer from './components/card/ErrorMessageContainer';
-import WordContainer from './components/card/WordContainer';
+import FeedContainer from './src/feed/components/FeedContainer';
+import Footer from './src/footer/Footer';
+import ErrorMessageContainer from './src/common/ErrorMessageContainer';
+import WordContainer from './src/common/WordContainer';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 

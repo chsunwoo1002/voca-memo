@@ -1,4 +1,4 @@
-import { VocabularyType } from "../types/word";
+import { VocabularyType } from '../../common/types/word';
 
 export interface FooterProps {
   handleFavoriteWords: (words: Array<VocabularyType>) => void;

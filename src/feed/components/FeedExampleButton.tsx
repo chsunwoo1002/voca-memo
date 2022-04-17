@@ -1,8 +1,8 @@
-import React from "react";
-import { TouchableOpacity, Text } from "react-native";
-import Styles from "../styles/feed";
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import Styles from '../styles/feed';
 
-import { FeedExampleButtonProps } from "../types/feed";
+import { FeedExampleButtonProps } from '../types/feed';
 
 const FeedExampleButton: React.FC<FeedExampleButtonProps> = ({
   onPress,

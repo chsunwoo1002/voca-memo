@@ -1,15 +1,15 @@
-import React from "react";
-import { View, Text } from "react-native";
-import Styles from "../styles/card";
-import { VocabularyType, ErrorType } from "../types/word";
-import IconButton from "./IconButton";
+import React from 'react';
+import { View, Text } from 'react-native';
+import Styles from './styles/card';
+import { VocabularyType, ErrorType } from '../common/types/word';
+import IconButton from './IconButton';
 
 interface WordContainerProps {
   word: VocabularyType;
   onPress: () => void;
 }
 const wordIcons = {
-  back: require("../../assets/icons/back_arrow.png"),
+  back: require('../../assets/icons/back_arrow.png'),
 };
 const WordContainer: React.FC<WordContainerProps> = ({ word, onPress }) => {
   return (

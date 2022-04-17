@@ -1,37 +1,37 @@
-import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
-import FlipVocaCard from "./card/FlipVocaCard";
-import { FeedProps } from "./types/feed";
-import { VocabularyType } from "./types/word";
-import Styles from "./styles/feed";
-import IconButton from "./card/IconButton";
-import ExampleCard from "./card/ExampleCard";
-import FeedExampleButton from "./card/FeedExampleButton";
+import React, { useState } from 'react';
+import { View, Text, TextInput } from 'react-native';
+import FlipVocaCard from './components/FlipVocaCard';
+import { FeedProps } from '../types/feed';
+import { VocabularyType } from '../common/types/word';
+import Styles from './styles/feed';
+import IconButton from '../common/IconButton';
+import ExampleCard from './components/ExampleCard';
+import FeedExampleButton from './components/FeedExampleButton';
 
 const Feed: React.FC<FeedProps> = ({ word }) => {
   const [isFavourite, setIsFavourite] = useState<Boolean>(false);
   const [isMemorized, setIsMemorized] = useState<Boolean>(false);
   const [isExamplePage, setIsExamplePage] = useState<Boolean>(false);
-  const [additionalExample, setAdditionalExample] = useState<string>("");
+  const [additionalExample, setAdditionalExample] = useState<string>('');
   const [examples, setExamples] = useState<Array<string>>([
-    "apple is apple",
-    "banana is banana",
-    "cinammon",
-    "de",
-    "ee",
+    'apple is apple',
+    'banana is banana',
+    'cinammon',
+    'de',
+    'ee',
   ]);
 
   const feedIcons = {
-    like: require("../assets/icons/favourite.png"),
-    memorized: require("../assets/icons/done_all.png"),
-    play: require("../assets/icons/play.png"),
-    pause: require("../assets/icons/pause.png"),
-    add: require("../assets/icons/add.png"),
-    back: require("../assets/icons/back_arrow.png"),
+    like: require('../assets/icons/favourite.png'),
+    memorized: require('../assets/icons/done_all.png'),
+    play: require('../assets/icons/play.png'),
+    pause: require('../assets/icons/pause.png'),
+    add: require('../assets/icons/add.png'),
+    back: require('../assets/icons/back_arrow.png'),
   };
 
   const switchButtonValue = () => {
-    console.log("clicked");
+    console.log('clicked');
   };
   const playSound = () => {};
   const updateExampleString = (example: string) => {

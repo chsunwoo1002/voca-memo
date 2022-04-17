@@ -1,7 +1,7 @@
-import React from "react";
-import { TouchableOpacity, Text, Image } from "react-native";
+import React from 'react';
+import { TouchableOpacity, Text, Image } from 'react-native';
 
-import { IconButtonProps } from "../types/card";
+import { IconButtonProps } from './types/card';
 
 const IconButton: React.FC<IconButtonProps> = ({
   onPress,

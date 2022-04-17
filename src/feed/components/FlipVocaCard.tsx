@@ -6,17 +6,17 @@ import {
   TouchableOpacity,
   Animated,
   Pressable,
-} from "react-native";
-import { useState, useRef } from "react";
-import FlipCard from "react-native-flip-card";
+} from 'react-native';
+import { useState, useRef } from 'react';
+import FlipCard from 'react-native-flip-card';
 import {
   FilpCardProps,
   VocabularyType,
   PhoneticType,
   MeaningType,
   DefinitionType,
-} from "../types/word";
-import styles from "../styles/feed";
+} from '../../common/types/word';
+import styles from '../styles/feed';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -30,7 +30,7 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
       {
         rotateY: flipAnimation.interpolate({
           inputRange: [0, 180],
-          outputRange: ["0deg", "180deg"],
+          outputRange: ['0deg', '180deg'],
         }),
       },
     ],
@@ -40,7 +40,7 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
       {
         rotateY: flipAnimation.interpolate({
           inputRange: [0, 180],
-          outputRange: ["180deg", "360deg"],
+          outputRange: ['180deg', '360deg'],
         }),
       },
     ],
@@ -66,8 +66,8 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
     >
       <Animated.View
         style={{
-          backgroundColor: "white",
-          position: "absolute",
+          backgroundColor: 'white',
+          position: 'absolute',
           ...flipToBackStyle,
         }}
       >
@@ -92,8 +92,8 @@ const FlipVocaCard: React.FC<FilpCardProps> = ({ word }) => {
       </Animated.View>
       <Animated.View
         style={{
-          backgroundColor: "white",
-          backfaceVisibility: "hidden",
+          backgroundColor: 'white',
+          backfaceVisibility: 'hidden',
           ...flipToFrontStyle,
         }}
       >

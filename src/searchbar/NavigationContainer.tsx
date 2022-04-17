@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { View, TextInput } from "react-native";
-import styles from "./styles/navigation";
-import { NavigationProp } from "./types/navigation";
+import React, { useState } from 'react';
+import { View, TextInput } from 'react-native';
+import styles from './styles/navigation';
+import { NavigationProp } from '../types/navigation';
 
 const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
-  const [search, setSearch] = useState("");
-  const [isValid, setIsValid] = useState("false");
+  const [search, setSearch] = useState('');
+  const [isValid, setIsValid] = useState('false');
 
   const updateSearch = (search: string) => {
     setSearch(search);
@@ -15,7 +15,7 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
     await fetch(
       `https://dictionary-api-flask.herokuapp.com/dictionary-api/v1/word?word=${search}&language=en-US`,
       {
-        method: "GET",
+        method: 'GET',
       }
     )
       .then(async (response) => {
