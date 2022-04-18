@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Footer from '../components/footer/Footer';
+import Footer from './footer';
 import FeedContainer from '../components/feed/components/FeedContainer';
 import NavigationContainer from '../components/searchbar/NavigationContainer';
 import WordContainer from '../components/common/WordContainer';
