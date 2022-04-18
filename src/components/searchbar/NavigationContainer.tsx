@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import styles from './styles/navigation';
-import { NavigationProp } from '../types/navigation';
+import { NavigationProp } from './types/navigation';
 
 const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
   const [search, setSearch] = useState('');

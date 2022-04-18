@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import FlipVocaCard from './components/FlipVocaCard';
-import { FeedProps } from '../types/feed';
+import { FeedProps } from './types/feed';
 import { VocabularyType } from '../common/types/word';
 import Styles from './styles/feed';
 import IconButton from '../common/IconButton';

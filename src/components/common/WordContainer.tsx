@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Styles from './styles/card';
-import { VocabularyType, ErrorType } from '../common/types/word';
+import { VocabularyType, ErrorType } from './types/word';
 import IconButton from './IconButton';
 
 interface WordContainerProps {
