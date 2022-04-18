@@ -9,7 +9,7 @@ interface WordContainerProps {
   onPress: () => void;
 }
 const wordIcons = {
-  back: require('../../assets/icons/back_arrow.png'),
+  back: require('../../../assets/icons/back_arrow.png'),
 };
 const WordContainer: React.FC<WordContainerProps> = ({ word, onPress }) => {
   return (

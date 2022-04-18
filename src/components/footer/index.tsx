@@ -10,10 +10,10 @@ const Footer: React.FC<FooterProps> = ({
   testAPIf,
 }) => {
   const footerIcons = {
-    favourite: require('../assets/icons/favourite.png'),
-    doneAll: require('../assets/icons/done_all.png'),
-    language: require('../assets/icons/language.png'),
-    shuffle: require('../assets/icons/shuffle.png'),
+    favourite: require('../../../assets/icons/favourite.png'),
+    doneAll: require('../../../assets/icons/done_all.png'),
+    language: require('../../../assets/icons/language.png'),
+    shuffle: require('../../../assets/icons/shuffle.png'),
   };
   const { APP_BASE_URL } = process.env;
 
