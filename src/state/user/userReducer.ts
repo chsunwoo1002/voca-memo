@@ -1,40 +1,26 @@
-import { User, UserState, UserAction } from './userStateType';
-import type { Action } from 'redux';
-
-const LOG_IN = 'user/LOGIN';
-const LOG_OUT = 'user/LOG_OUT';
+import { UserState } from './userStateType';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: UserState = {
   loggedIn: false,
-  loggedUser: { firstName: '', lastName: '', email: '', password: '' },
-};
+  email: '',
+  password: '',
+} as UserState;
 
-export const userLogIn = (user: User): UserAction => ({
-  type: LOG_IN,
-  userState: {
-    loggedIn: true,
-    loggedUser: user,
+const userSlice = createSlice({
+  name: 'userState',
+  initialState,
+  reducers: {
+    login: (state, action: PayloadAction<UserState>) => {
+      state.loggedIn = true;
+      state.email = action.payload.email;
+      state.password = action.payload.password;
+    },
+    logout: () => {
+      initialState;
+    },
   },
 });
 
-export const userLogOut = (): UserAction => ({
-  type: LOG_OUT,
-  userState: initialState,
-});
-
-export default function setUserState(
-  state: UserState = initialState,
-  action: UserAction
-) {
-  switch (action.type) {
-    case LOG_OUT:
-      return initialState;
-    case LOG_IN:
-      return {
-        loggedIn: false,
-        userState: action.userState,
-      };
-    default:
-      return state;
-  }
-}
+export const { login, logout } = userSlice.actions;
+export default userSlice.reducer;

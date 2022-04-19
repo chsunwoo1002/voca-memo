@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import Footer from './footer';
-import FeedContainer from '../components/feed/components/FeedContainer';
-import NavigationContainer from '../components/searchbar/NavigationContainer';
-import WordContainer from '../components/common/WordContainer';
+import FeedContainer from './feed/components/FeedContainer';
+import NavigationContainer from './searchbar/NavigationContainer';
+import WordContainer from './common/WordContainer';
 import { View } from 'react-native';
 
 import { VocabularyType } from './common/types/word';
+import store from '../state/store';
 
 const ContentContainer: React.FC = () => {
   const [isNewFeed, setIsNewFeed] = useState(false);

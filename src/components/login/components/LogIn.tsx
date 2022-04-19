@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
+import { useDispatch } from 'react-redux';
+
+import { login } from '../../../state/user/userReducer';
 import TextButton from '../../common/TextButton';
 import { LogInProps } from '../types/auth';
+import { UserState } from '../../../state/user/userStateType';
 
 const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const u = () => {
-    // https request to login
-    console.log(username);
-    console.log(password);
+  const dispatch = useDispatch();
+  const tryLogin = () => {
+    const payload: UserState = {
+      loggedIn: true,
+      email: username,
+      password: password,
+    };
+    dispatch(login(payload));
   };
   return (
     <View>
@@ -25,7 +33,7 @@ const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
         placeholder='Password'
         secureTextEntry={true}
       />
-      <TextButton title='Login' onPress={u} />
+      <TextButton title='Login' onPress={tryLogin} />
       <TextButton title='Sign up' onPress={switchPage} />
     </View>
   );
