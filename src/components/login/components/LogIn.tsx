@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { login } from '../../../state/user/userReducer';
 import TextButton from '../../common/TextButton';
 import { LogInProps } from '../types/auth';
-import { UserState } from '../../../state/user/userStateType';
+import { login, logout, loginAPI } from '../../../state/user/login';
 
 const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
   const tryLogin = () => {
-    const payload: UserState = {
-      loggedIn: true,
+    const data = {
       email: username,
-      password: password,
+      password,
     };
-    dispatch(login(payload));
+    dispatch(loginAPI(data));
   };
   return (
     <View>

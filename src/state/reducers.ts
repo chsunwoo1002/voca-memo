@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import userState from './user/userReducer';
-
+import userLogin from './user/login';
 const reducers = combineReducers({
-  userState,
+  userLogin,
   // add reducers here
 });
 

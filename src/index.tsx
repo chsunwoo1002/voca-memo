@@ -9,7 +9,7 @@ import { RootState } from './state/store';
 
 export default function Root() {
   const { isLoggedin } = useSelector((state: RootState) => ({
-    isLoggedin: state.userState.loggedIn,
+    isLoggedin: state.userLogin.isLoggedIn,
   }));
 
   return (

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import TextButton from '../../common/TextButton';
-import { SignUpProps } from '../types/auth';
+import { LogInProps } from '../types/auth';
 
-const SignUp: React.FC<SignUpProps> = ({ switchPage }) => {
+const SignUp: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
