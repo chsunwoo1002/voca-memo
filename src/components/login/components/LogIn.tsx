@@ -5,13 +5,17 @@ import { useDispatch } from 'react-redux';
 import TextButton from '../../common/TextButton';
 import { LogInProps } from '../types/auth';
 import { getUserProfileThunk } from '../../../state/user';
+
 const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
+
+  // runtime works, but ts complaint args --> need to figure out
   const tryLogin = () => {
     dispatch(getUserProfileThunk(username, password));
   };
+
   return (
     <View>
       <Text>Login page</Text>

@@ -14,6 +14,7 @@ export function getUserProfileThunk(
     dispatch(request());
     try {
       const userProfile = await userLoginPost(email, password);
+      console.log(userProfile);
       dispatch(success(userProfile));
     } catch (e) {
       if (axios.isAxiosError(e)) {
