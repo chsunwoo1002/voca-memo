@@ -8,14 +8,12 @@ export async function userLoginPost(email: string, password: string) {
   return response.data;
 }
 
-export interface loginSuccess {
+export interface LoginResponse {
   status: string;
-  data: string;
+  error: null | string;
+  data: {
+    email: string;
+    password: string;
+    id: string;
+  };
 }
-
-export interface loginFailure {
-  status: string;
-  error: string;
-}
-
-export type LoginResponse = loginFailure | loginSuccess;

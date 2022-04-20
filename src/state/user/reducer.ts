@@ -6,37 +6,33 @@ const initialState: LoginState = {
   user: {
     loading: false,
     error: null,
+    isLoggedIn: false,
     data: {
       email: '',
       password: '',
       id: '',
-      isLoggedIn: false,
     },
   },
 };
 
 const login = createReducer<LoginState, LoginAction>(initialState, {
   [POST_LOG_IN]: (state, action) => ({
-    ...state,
-    userProfile: {
+    user: {
+      ...state.user,
       loading: true,
     },
   }),
   [POST_LOG_IN_SUCCESS]: (state, action) => ({
-    ...state,
-    userProfile: {
+    user: {
+      ...state.user,
       loading: false,
-      error: null,
-      data: action.payload,
+      isLoggedIn: true,
+      data: action.payload.data,
     },
   }),
   [POST_LOG_IN_ERROR]: (state, action) => ({
-    ...state,
-    userProfile: {
-      loading: false,
-      error: action.payload,
-      data: null,
-    },
+    ...initialState,
+    error: action.payload,
   }),
 });
 

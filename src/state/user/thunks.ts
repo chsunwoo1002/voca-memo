@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../store';
+import { RootState } from '../reducers';
 import { LoginAction } from './types';
 import { userLoginPost } from '../../api/login';
 import { postLoginAsync } from './actions';

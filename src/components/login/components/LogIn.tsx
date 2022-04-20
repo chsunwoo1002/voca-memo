@@ -4,18 +4,13 @@ import { useDispatch } from 'react-redux';
 
 import TextButton from '../../common/TextButton';
 import { LogInProps } from '../types/auth';
-import { login, logout, loginAPI } from '../../../state/user/login';
-
+import { getUserProfileThunk } from '../../../state/user';
 const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
   const tryLogin = () => {
-    const data = {
-      email: username,
-      password,
-    };
-    dispatch(loginAPI(data));
+    dispatch(getUserProfileThunk(username, password));
   };
   return (
     <View>

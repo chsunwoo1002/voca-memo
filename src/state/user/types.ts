@@ -8,11 +8,11 @@ export type LoginState = {
   user: {
     loading: boolean;
     error: Error | null;
+    isLoggedIn: boolean;
     data: {
       email: string;
       password: string;
       id: string;
-      isLoggedIn: boolean;
     };
   };
 };
