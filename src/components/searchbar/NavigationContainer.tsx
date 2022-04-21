@@ -34,7 +34,7 @@ const NavigationContainer: React.FC<NavigationProp> = ({ handleNewWord }) => {
       <TextInput
         style={styles.search}
         onChangeText={updateSearch}
-        placeholder='search here:)'
+        placeholder='search word'
         inlineImageLeft='search'
         onSubmitEditing={getWordFromAPI}
         clearButtonMode='always'

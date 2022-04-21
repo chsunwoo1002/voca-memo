@@ -5,7 +5,7 @@ import FeedContainer from './feed/components/FeedContainer';
 import NavigationContainer from './searchbar/NavigationContainer';
 import WordContainer from './common/WordContainer';
 import { View } from 'react-native';
-
+import styles from '../components/common/styles/Styles';
 import { VocabularyType } from './common/types/word';
 import store from '../state/store';
 
@@ -478,7 +478,7 @@ const ContentContainer: React.FC = () => {
   };
 
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <NavigationContainer handleNewWord={getWordFromAPI} />
       {isNewWord && newWord && (
         <WordContainer word={newWord} onPress={() => setIsValid(false)} />

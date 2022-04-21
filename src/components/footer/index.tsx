@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({
     <View style={styles.footerContainer}>
       <IconButton
         onPress={getData}
-        title='btn 1'
+        title='favourite'
         icon={footerIcons.favourite}
         buttonStyle={styles.footerButtonCotainer}
         titleStyle={styles.footerButtonText}
@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({
       />
       <IconButton
         onPress={() => handleMemorizedWords}
-        title='btn 2'
+        title='memo'
         icon={footerIcons.doneAll}
         buttonStyle={styles.footerButtonCotainer}
         titleStyle={styles.footerButtonText}
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({
       />
       <IconButton
         onPress={() => console.log('button3 clicked')}
-        title='btn 3'
+        title='For you'
         icon={footerIcons.language}
         buttonStyle={styles.footerButtonCotainer}
         titleStyle={styles.footerButtonText}
@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({
       />
       <IconButton
         onPress={() => console.log('button4 clicked')}
-        title='btn 4'
+        title='Setting'
         icon={footerIcons.shuffle}
         buttonStyle={styles.footerButtonCotainer}
         titleStyle={styles.footerButtonText}

@@ -1,28 +1,30 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   footerContainer: {
-    width: "100%",
-    height: "10%",
-    flexDirection: "row",
-    position: "absolute",
-    bottom: 0,
-    borderColor: "#F0ECE3",
+    width: '100%',
+    height: '8%',
+    flexDirection: 'row',
+    borderColor: '#F0ECE3',
     borderTopWidth: 3,
-    justifyContent: "center",
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   footerButtonCotainer: {
-    width: "20%",
-    height: "80%",
-    margin: 10,
-    borderColor: "#000000",
-    borderWidth: 1,
-    justifyContent: "center",
-    alignContent: "center",
+    height: '100%',
+    width: '18%',
+    alignItems: 'center',
+    marginTop: 5,
   },
   footerButtonIcon: {
-    width: "70%",
-    height: "70%",
+    width: '70%',
+    height: '70%',
+    resizeMode: 'contain',
+    opacity: 0.5,
   },
-  footerButtonText: {},
+  footerButtonText: {
+    fontSize: 10,
+    color: 'gray',
+  },
 });
