@@ -1,6 +1,11 @@
 import { createReducer } from 'typesafe-actions';
 import { LoginAction, LoginState } from './types';
-import { POST_LOG_IN, POST_LOG_IN_SUCCESS, POST_LOG_IN_ERROR } from './actions';
+import {
+  POST_LOG_IN,
+  POST_LOG_IN_SUCCESS,
+  POST_LOG_IN_ERROR,
+  POST_LOG_IN_FAILURE,
+} from './actions';
 
 const initialState: LoginState = {
   user: {
@@ -12,6 +17,7 @@ const initialState: LoginState = {
       password: '',
       id: '',
     },
+    accessToken: '',
   },
 };
 
@@ -19,6 +25,11 @@ const login = createReducer<LoginState, LoginAction>(initialState, {
   [POST_LOG_IN]: (state, action) => ({
     user: {
       ...state.user,
+      data: {
+        ...state.user.data,
+        email: action.payload.email,
+        password: action.payload.password,
+      },
       loading: true,
     },
   }),
@@ -27,12 +38,25 @@ const login = createReducer<LoginState, LoginAction>(initialState, {
       ...state.user,
       loading: false,
       isLoggedIn: true,
-      data: action.payload.data,
+      data: {
+        ...state.user.data,
+        id: action.payload.data.id,
+      },
+      accessToken: action.payload.accessToken,
     },
   }),
   [POST_LOG_IN_ERROR]: (state, action) => ({
-    ...initialState,
-    error: action.payload,
+    user: {
+      ...state.user,
+      loading: false,
+      error: action.payload,
+    },
+  }),
+  [POST_LOG_IN_FAILURE]: (state, action) => ({
+    user: {
+      ...state.user,
+      loading: false,
+    },
   }),
 });
 

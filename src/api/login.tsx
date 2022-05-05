@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Response } from './type';
 
 export async function userLoginPost(email: string, password: string) {
   const response = await axios.post<LoginResponse>(
@@ -11,12 +12,10 @@ export async function userLoginPost(email: string, password: string) {
   return response.data;
 }
 
-export interface LoginResponse {
-  status: string;
-  error: null | string;
+export interface LoginResponse extends Response {
   data: {
-    email: string;
-    password: string;
     id: string;
   };
+  refreshToken: string;
+  accessToken: string;
 }

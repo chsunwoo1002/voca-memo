@@ -14,5 +14,11 @@ export type LoginState = {
       password: string;
       id: string;
     };
+    accessToken: string;
   };
+};
+
+export type UserInput = {
+  email: string;
+  password: string;
 };
