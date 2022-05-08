@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Response } from './type';
 
 export async function userLoginPost(email: string, password: string) {
-  const response = await axios.post<LoginResponse>(
+  const response = await axios.post<LoginResponse | Response>(
     'http://localhost:5000/api/userAuth/v1/login',
     {
       email,

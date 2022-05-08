@@ -5,6 +5,10 @@ import {
   POST_LOG_IN_SUCCESS,
   POST_LOG_IN_ERROR,
   POST_LOG_IN_FAILURE,
+  POST_SING_UP,
+  POST_SING_UP_SUCCESS,
+  POST_SING_UP_ERROR,
+  POST_SING_UP_FAILURE,
 } from './actions';
 
 const initialState: LoginState = {

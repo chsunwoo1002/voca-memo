@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import styles from '../styles/login';
 import TextButton from '../../common/TextButton';
 import { LogInProps } from '../types/auth';
-import { getUserProfileThunk } from '../../../state/user';
+import { getUserProfileThunk } from '../../../state/user/login';
 
 const LogIn: React.FC<LogInProps> = ({ switchPage }) => {
   const [username, setUsername] = useState<string>('');

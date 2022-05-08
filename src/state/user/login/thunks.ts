@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../reducers';
+import { RootState } from '../../reducers';
 import { LoginAction } from './types';
-import { userLoginPost } from '../../api/login';
+import { userLoginPost } from '../../../api/auth/login';
 import { postLoginAsync } from './actions';
 import axios from 'axios';
 
@@ -14,7 +14,7 @@ export function getUserProfileThunk(
     dispatch(request({ email, password }));
     try {
       const userProfile = await userLoginPost(email, password);
-      if (userProfile.status === 'ok') {
+      if ('data' in userProfile) {
         dispatch(success(userProfile));
       } else {
         dispatch(cancel(userProfile));

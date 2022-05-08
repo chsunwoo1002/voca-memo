@@ -1,6 +1,6 @@
 import * as actions from './actions';
 import { ActionType } from 'typesafe-actions';
-import { LoginResponse } from '../../api/login';
+import { LoginResponse } from '../../../api/auth/login';
 
 export type LoginAction = ActionType<typeof actions>;
 
