@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput} from 'react-native';
 import FlipVocaCard from './components/FlipVocaCard';
-import { FeedProps } from './types/feed';
-import { VocabularyType } from '../common/types/word';
+import {FeedProps} from './types/feed';
 import Styles from './styles/feed';
 import IconButton from '../common/IconButton';
 import ExampleCard from './components/ExampleCard';
 import FeedExampleButton from './components/FeedExampleButton';
+import {feedIcons} from '../../modules/iconModules';
 
-const Feed: React.FC<FeedProps> = ({ word }) => {
+const Feed: React.FC<FeedProps> = ({word}) => {
   const [isFavourite, setIsFavourite] = useState<Boolean>(false);
   const [isMemorized, setIsMemorized] = useState<Boolean>(false);
   const [isExamplePage, setIsExamplePage] = useState<Boolean>(false);
@@ -21,15 +21,6 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
     'ee',
   ]);
 
-  const feedIcons = {
-    like: require('../../../assets/icons/favourite.png'),
-    memorized: require('../../../assets/icons/done_all.png'),
-    play: require('../../../assets/icons/play.png'),
-    pause: require('../../../assets/icons/pause.png'),
-    add: require('../../../assets/icons/add.png'),
-    back: require('../../../assets/icons/back_arrow.png'),
-  };
-
   const switchButtonValue = () => {
     console.log('clicked');
   };
@@ -38,10 +29,10 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
     setAdditionalExample(example);
   };
   const submitUpdateExample = () => {
-    setExamples((prev) => [additionalExample, ...prev]);
+    setExamples(prev => [additionalExample, ...prev]);
   };
   const switchToExampleCoponent = () => {
-    setIsExamplePage((prev) => {
+    setIsExamplePage(prev => {
       return !prev;
     });
   };
@@ -86,8 +77,8 @@ const Feed: React.FC<FeedProps> = ({ word }) => {
           <TextInput
             style={Styles.feedExampleInput}
             onChangeText={updateExampleString}
-            placeholder='add example here'
-            inlineImageLeft='search'
+            placeholder="add example here"
+            inlineImageLeft="search"
             onSubmitEditing={submitUpdateExample}
           />
           <IconButton
