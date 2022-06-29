@@ -7,6 +7,10 @@ import IconButton from '../common/IconButton';
 import ExampleCard from './components/ExampleCard';
 import FeedExampleButton from './components/FeedExampleButton';
 import {feedIcons} from '../../modules/iconModules';
+import Sound from 'react-native-sound';
+import FeedButtonContainer from './components/FeedButtonContainer';
+
+Sound.setCategory('Playback');
 
 const Feed: React.FC<FeedProps> = ({word}) => {
   const [isFavourite, setIsFavourite] = useState<Boolean>(false);
@@ -20,11 +24,16 @@ const Feed: React.FC<FeedProps> = ({word}) => {
     'de',
     'ee',
   ]);
+  const trackContainer = new Sound(
+    word.phonetics[0].audio,
+    undefined,
+    error => {
+      if (error) {
+        console.log("Can't load sound");
+      }
+    },
+  );
 
-  const switchButtonValue = () => {
-    console.log('clicked');
-  };
-  const playSound = () => {};
   const updateExampleString = (example: string) => {
     setAdditionalExample(example);
   };
@@ -32,35 +41,14 @@ const Feed: React.FC<FeedProps> = ({word}) => {
     setExamples(prev => [additionalExample, ...prev]);
   };
   const switchToExampleCoponent = () => {
-    setIsExamplePage(prev => {
-      return !prev;
-    });
+    setIsExamplePage(prev => !prev);
   };
 
   if (!isExamplePage) {
     return (
       <View style={Styles.feedContainer}>
         <FlipVocaCard word={word} />
-        <View style={Styles.feedButtonsContainer}>
-          <IconButton
-            onPress={playSound}
-            icon={feedIcons.play}
-            buttonStyle={Styles.feedButton}
-            buttonIconStyle={Styles.feedButtonIcon}
-          />
-          <IconButton
-            onPress={switchButtonValue}
-            icon={feedIcons.like}
-            buttonStyle={Styles.feedButton}
-            buttonIconStyle={Styles.feedButtonIcon}
-          />
-          <IconButton
-            onPress={switchButtonValue}
-            icon={feedIcons.memorized}
-            buttonStyle={Styles.feedButton}
-            buttonIconStyle={Styles.feedButtonIcon}
-          />
-        </View>
+        <FeedButtonContainer sound={trackContainer} />
         {examples.length > 0 ? (
           <View style={Styles.feedActiveExamplesContainer}>
             <FeedExampleButton
