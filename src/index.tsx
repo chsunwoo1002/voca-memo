@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import styles from './components/common/styles/Styles';
 import LoginContainer from './components/login';
@@ -11,7 +11,7 @@ export default function Root() {
   // }));
   let isLoggedin = true;
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
       {!isLoggedin && <LoginContainer />}
       {isLoggedin && <ContentContainer />}
     </SafeAreaView>

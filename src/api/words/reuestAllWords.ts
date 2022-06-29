@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { VocabularyType } from '../../components/common/types/word';
+import {VocabularyType} from '../../components/common/types/word';
 
 export async function allWordsRequest(
   id: string,
   section: string,
-  accessToken: string
+  accessToken: string,
 ) {
   const response = await axios({
     method: 'get',
