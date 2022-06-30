@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 /**
  * @interface IWord interface of word
@@ -15,11 +15,10 @@ interface IWord {
 }
 
 /**
- * inherited interface from AxiosResponse
  * @interface FetchWordsResponse interface of HTTP response for fetchWords
  * @member {IWord[]} words a list of IWords
  */
-export interface FetchWordsResponse extends AxiosResponse {
+export interface FetchWordsResponse {
   words: IWord[];
 }
 
